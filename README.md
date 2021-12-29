@@ -1,3 +1,3 @@
 # Test
 
-This reposatory was created only for testing.
+This repository was created only for testing.
