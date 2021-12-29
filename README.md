@@ -1,3 +1,3 @@
 # Test
 
-My name is SD.
+This reposatory was created only for testing.
