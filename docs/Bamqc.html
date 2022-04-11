@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Report(bamqc)</title>
+<style>
+    body{        
+        padding-top: 70px;
+        padding-bottom: 40px;
+        padding-left: 20em;
+        
+    }
+    .container{
+        width: 90%;
+        margin: 0 auto; /* Center the DIV horizontally */
+    }
+    .fixed-header{
+        width: 100%;
+        position: fixed;        
+        background: #333;
+        padding: 20px 0;
+        color: #fff;
+        left: 0;
+    }
+    .fixed-footer{
+        width: 100%;
+        position: fixed;        
+        background: #333;
+        padding: 10px 0;
+        color: #fff;
+        left: 0;
+    }
+    .fixed-header{
+        top: 0;
+    }
+    .fixed-footer{
+        bottom: 0;
+    }    
+    /* Some more styles to beautify this example */
+   ul.navbar {
+    position: fixed;
+    top: 4em;
+    left: 1em;
+    width: 19em }
+    
+    .container p{
+        line-height: 200px; /* Create scrollbar to test positioning */
+    }
+</style>
+</head>
+<body>
+    <div class="fixed-header">
+<div class="headertitle">
+<span style="color:#FF5733; font-size:125%; float: left; padding-left: 20px;"><b>Map</b></span>
+<span style="color:#16A085; font-size:125%; float: left;"><b>Insights</b></span>
+<mid style="color:white; font-size:100%; float: right; padding-right: 20px;">Mapinsights bamqc report</mid>
+</div>
+</div>
+
+<ul class="navbar">
+<h2 style="color:#797D7F;">CONTENTS</h2>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Parameters & inputs" style="color:#1C2833;" >Commands and parameters</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Summary statistics" style="color:#1C2833;" >Summary statistics</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Base quality distribution" style="color:#1C2833;" >Base quality distribution</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Per base average quality" style="color:#1C2833;" >Per base average quality</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Per base sequence content" style="color:#1C2833;" >Per base sequence content</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#GC content distribution" style="color:#1C2833;" >GC content distribution</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Mapping quality distribution" style="color:#1C2833;" >Mapping quality profile</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Insert size histogram" style="color:#1C2833;" >Insert size histogram</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Mismatch counts" style="color:#1C2833;" >Mismatch counts</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Basechange & quality" style="color:#1C2833;" >Basechange & quality</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Per cycle mismatchs & quality status" style="color:#1C2833;" >Per cycle mismatchs & quality status</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Deletion and Insertion status" style="color:#1C2833;" >Deletion and Insertion status</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Read clipping status" style="color:#1C2833;" >Read clipping status</a></li>
+</ul>
+
+        
+    
+  <head>
+<style>
+* {
+  box-sizing: border-box;
+
+}
+
+
+.column {
+ 
+  float: left;
+  width: 50%;
+  padding: 5px;
+  
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+
+<style>
+
+div.mapsummary{
+
+}
+
+table.mapsummary{
+
+	border: 0px;
+  width: 80%;
+  vertical-align: top;
+
+}
+
+div.table-mapsummary{
+	margin-left:auto; 
+  margin-right:auto; 
+	padding-bottom: 20px;
+}
+
+td.column1{
+	width: 50%;
+}
+
+table.infotable {
+
+	font-size:14px;
+	border-color: #AEB6BF;
+	border-width: 1px;
+	border-collapse: collapse;
+}
+table.infotable th {
+	padding: 8px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #AEB6BF;
+	background-color:#FBFCFC;
+}
+table.infotable tr {
+	background-color:#FBFCFC;
+}
+table.infotable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #AEB6BF;
+}
+
+</style>
+
+<h2 id="Parameters & inputs" style="background-color:#E5E7E9;"><u>Parameters & inputs</u></h2>
+
+<div class=mapsummary>
+<h3>Command line</h3>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>mapinsights bamqc -r reference.fa -i input.bam -o bamqc-output/ </td>
+</tr>
+</table>
+</div>
+
+<div class=mapsummary>
+<h3>Parameters</h3>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Alignment file</td>
+<td class=column2>input.bam</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Reference file</td>
+<td class=column2>reference.fa</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Bed file</td>
+<td class=column2>Not specified</td>
+</tr>
+
+</table>
+</div>
+
+
+<div class=mapsummary>
+<h3>Other information</h3>
+<table class="mapsummary infotable">
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>No of contigs in alignment file</td>
+<td class=column2>86</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>No of @RG tag</td>
+<td class=column2>4</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Sample name [@RG SM]</td>
+<td class=column2>NA12878_CGTACTAG_L1</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Library [@RG LB]</td>
+<td class=column2>na12878</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Identifier [@RG ID]</td>
+<td class=column2>NA12878_CGTACTAG_L1 NA12878_CGTACTAG_L2 NA12878_TAAGGCGA_L1 NA12878_TAAGGCGA_L2 </td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Analysis date</td>
+<td class=column2>Fri Apr  8 15:38:39 2022
+</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Homopolymer size</td>
+<td class=column2>5</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Reference size (bp)</td>
+<td class=column2>3137454505</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Targeted region size (bp)</td>
+<td class=column2>0</td>
+</tr>
+
+</table>
+</div>
+
+
+<h2 id="Summary statistics" style="background-color:#E5E7E9;"><u>Summary statistics</u></h2>
+
+<div class=mapsummary>
+<h3>Global counts</h3>
+<table class="mapsummary infotable">
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>No of reads in input file</td>
+<td class=column2>34321158</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Unmapped reads</td>
+<td class=column2>7706 (0.02%)</td>
+</tr>
+
+</table>
+</div>
+
+
+<div class=mapsummary>
+<h3>Mapping logs (Globals)</h3>
+<table class="mapsummary infotable">
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1></td>
+<td class=column2> <b>Overall</b></td>
+<td class=column3> <b>Read1</b></td>
+<td class=column4> <b>Read2</b></td>
+</tr>
+
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-reads</td>
+<td class=column2>34313452</td>
+<td class=column3>17067200 (49.74%)</td>
+<td class=column4>17246252 (50.26%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-read1</td>
+<td class=column2>17067200 (49.74%)</td>
+<td class=column3>17067200 (100.00%)</td>
+<td class=column4>-</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-read2</td>
+<td class=column2>17246252 (50.26%)</td>
+<td class=column3>-</td>
+<td class=column4>17246252 (100.00%)</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-forward</td>
+<td class=column2>17159908 (50.01%)</td>
+<td class=column3>8536942 (49.75%)</td>
+<td class=column4>8622966 (50.25%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-reverse</td>
+<td class=column2>17153544 (49.99%)</td>
+<td class=column3>8530258 (49.73%)</td>
+<td class=column4>8623286 (50.27%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-pair</td>
+<td class=column2>34313452 (100.00%)</td>
+<td class=column3>17067200 (49.74%)</td>
+<td class=column4>17246252 (50.26%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-properpair</td>
+<td class=column2>33725003 (98.29%)</td>
+<td class=column3>16821228 (49.88%)</td>
+<td class=column4>16903775 (50.12%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Secondary-alignments</td>
+<td class=column2>627972 (1.83%)</td>
+<td class=column3>220624 (35.13%)</td>
+<td class=column4>407348 (64.87%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Supplementary-alignments</td>
+<td class=column2>0 (0.00%)</td>
+<td class=column3>0 (0.00%)</td>
+<td class=column4>0 (0.00%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>QC-failed</td>
+<td class=column2>0 (0.00%)</td>
+<td class=column3>0 (0.00%)</td>
+<td class=column4>0 (0.00%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Strand-ratio (F:R)</td>
+<td class=column2>0.50:0.50</td>
+<td class=column3>0.50:0.50</td>
+<td class=column4>0.50:0.50</td>
+</tr>
+
+</table>
+</div>
+
+<div class=mapsummary>
+<h3>Clipped summary</h3>
+<table class="mapsummary infotable">
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Softclip-events</td>
+<td class=column2>3808025</td>
+<td class=column3>1767710 (46.42%)</td>
+<td class=column4>2040315 (53.58%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Softclipped basecounts</td>
+<td class=column2>81837644</td>
+<td class=column3>36528879 (44.64%)</td>
+<td class=column4>45308765 (55.36%)</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Hardclip-events</td>
+<td class=column2>1150583</td>
+<td class=column3>405725 (35.26%)</td>
+<td class=column4>744858 (64.74%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Hardclipped basecounts</td>
+<td class=column2>50404797</td>
+<td class=column3>17765769 (35.25%)</td>
+<td class=column4>32639028 (64.75%)</td>
+</tr>
+
+</table>
+</div>
+
+<div class=mapsummary>
+<h3>Adapter summary</h3>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Illumina-Adapter</td>
+<td class=column2>1019</td>
+<td class=column3>857 (84.10%)</td>
+<td class=column4>162 (15.90%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Illumina-PCR-primer</td>
+<td class=column2>850</td>
+<td class=column3>849 (99.88%)</td>
+<td class=column4>1 (0.12%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Nextera-Transposase-Sequence</td>
+<td class=column2>851835</td>
+<td class=column3>427176 (50.15%)</td>
+<td class=column4>424659 (49.85%)</td>
+</tr>
+
+</table>
+</div>
+
+
+<div class=mapsummary>
+<h3>Base content</h3>
+<table class="mapsummary infotable">
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>A</td>
+<td class=column2>839117306 (25.18%)</td>
+<td class=column3>420967792 (50.17%)</td>
+<td class=column4>418149514 (49.83%)</td>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>T</td>
+<td class=column2>841379466 (25.24%)</td>
+<td class=column3>422076928 (50.16%)</td>
+<td class=column4>419302538 (49.84%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>G</td>
+<td class=column2>826352077 (24.79%)</td>
+<td class=column3>413172072 (50.00%)</td>
+<td class=column4>413180005 (50.00%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>C</td>
+<td class=column2>825969914 (24.78%)</td>
+<td class=column3>413070230 (50.01%)</td>
+<td class=column4>412899684 (49.99%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>N</td>
+<td class=column2>269354 (0.01%)</td>
+<td class=column3>43771 (16.25%)</td>
+<td class=column4>225583 (83.75%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC %</td>
+<td class=column2>49.58</td>
+<td class=column3>49.50</td>
+<td class=column4>49.66</td>
+</tr>
+
+</table>
+</div>
+
+<div class=mapsummary>
+<h3>Mismatches and indels</h3>
+<table class="mapsummary infotable">
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Single nucleotide match</td>
+<td class=column2>3323886859</td>
+<td class=column3>1665920315</td>
+<td class=column4>1657966544</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Single nucleotide mismatch</td>
+<td class=column2>8931904</td>
+<td class=column3>3366707</td>
+<td class=column4>5565197</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Insertion-events</td>
+<td class=column2>170177</td>
+<td class=column3>84635</td>
+<td class=column4>85542</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Inserted basecount</td>
+<td class=column2>328094</td>
+<td class=column3>161759</td>
+<td class=column4>166335</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Homopolymer Insertation</td>
+<td class=column2>77398</td>
+<td class=column3>39491</td>
+<td class=column4>37907</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Deletion-events</td>
+<td class=column2>227957</td>
+<td class=column3>115151</td>
+<td class=column4>112806</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Deleted basecount</td>
+<td class=column2>494580</td>
+<td class=column3>250382</td>
+<td class=column4>244198</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Homopolymer Deletion</td>
+<td class=column2>90326</td>
+<td class=column3>46356</td>
+<td class=column4>43970</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mismatch rate</td>
+<td class=column2>0.0027</td>
+<td class=column3>0.0020</td>
+<td class=column4>0.0033</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Insertion rate</td>
+<td class=column2>0.0001</td>
+<td class=column3>0.0001</td>
+<td class=column4>0.0001</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Deletion rate</td>
+<td class=column2>0.0001</td>
+<td class=column3>0.0001</td>
+<td class=column4>0.0001</td>
+</tr>
+
+</table>
+</div>
+
+<div class=mapsummary>
+<h3>Jump reads</h3>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-diffChr</td>
+<td class=column2>737807 (2.15%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Insertsize>=1K</td>
+<td class=column2>138272 (0.40%)</td>
+</tr>
+
+</table>
+</div>
+
+
+<div class=mapsummary>
+<h3>Pair orientation</h3>
+<table class="mapsummary infotable">
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-pair forward</td>
+<td class=column2>221269 (0.64%)</td>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-pair reverse</td>
+<td class=column2>222373 (0.65%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-pair outward</td>
+<td class=column2>46522 (0.14%)</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mapped-pair innerward</td>
+<td class=column2>33823288 (98.57%)</td>
+</tr>
+
+</table>
+</div>
+
+<div class=mapsummary>
+<h3>Other summary</h3>
+<table class="mapsummary infotable">
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverages</td>
+<td class=column2>1.06X</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>DuplicateMarked rate</td>
+<td class=column2>2148701 (6.26%)</td>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean insertsize</td>
+<td class=column2>182.0</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean base quality</td>
+<td class=column2>31.9</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean mapping quality</td>
+<td class=column2>57.9</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean read length</td>
+<td class=column2>99.5</td>
+</tr>
+
+</table>
+</div>
+
+<h2 style="background-color:#E5E7E9;"><u>Summary plots</u></h2>
+
+<div class="row">
+<div class="column">
+<h3 id="Base quality distribution" style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';"> Base quality distribution<a class="headerlink" name="Overall_Mismatchplot_U1.png" title="Permalink to this headline">&nbsp;</a></h3>
+<div><img width="500" height="500" src="plots/Basequality.png"></div>
+</div>
+<div class="column">
+<h3 id="Per base average quality" style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Per base average quality<a class="headerlink" name="Overall_Mismatchplot_U1.png" title="Permalink to this headline">&nbsp;</a></h3>
+<div><img width="500" height="500" src="plots/Percycle_qv.png"></div>
+</div>
+</div>
+
+
+<div class="row">
+<div class="column">
+<h3 id="Per base sequence content" style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Per base sequence content<a class="headerlink" name="Overall_Mismatchplot_U1.png" title="Permalink to this headline">&nbsp;</a></h3>
+<div><img width="500" height="500" src="plots/Perbase-seq-content.png"></div>
+</div>
+<div class="column">
+<h3 id="GC content distribution" style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">GC content distribution<a class="headerlink" name="Overall_Mismatchplot_U1.png" title="Permalink to this headline">&nbsp;</a></h3>
+<div><img width="500" height="500" src="plots/GC.png"></div>
+</div>
+</div>
+
+
+<div class="row">
+<div class="column">
+<h3 id="Mapping quality distribution" style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Mapping quality profile<a class="headerlink" name="Overall_Mismatchplot_U1.png" title="Permalink to this headline">&nbsp;</a></h3>
+<div><img width="500" height="500" src="plots/Mapping_quality.png"></div>
+</div>
+<div class="column">
+<h3 id="Insert size histogram" style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Insert size histogram<a class="headerlink" name="Overall_Mismatchplot_U1.png" title="Permalink to this headline">&nbsp;</a></h3>
+<div><img width="500" height="500" src="plots/Insertsize.png"></div>
+</div>
+</div>
+
+<h3 id="Mismatch counts" style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Mismatch counts<a class="headerlink" name="Overall_Mismatchplot_U1.png" title="Permalink to this headline">&nbsp;</a></h3>
+
+<div class="row">
+  <div class="column">
+      <div><img width="600" height="600" src="plots/Overall_Mismatchplot_U.png"></div>
+  </div>
+
+  <div class="column">
+      <div class="row">
+          <img width="300" height="300" src="plots/Read1_fs_Mismatchplot_U.png">
+          <img width="300" height="300" src="plots/Read1_rs_Mismatchplot_U.png">
+      </div> 
+
+      <div class="row">
+          <img width="300" height="300" src="plots/Read2_fs_Mismatchplot_U.png">
+          <img width="300" height="300" src="plots/Read2_rs_Mismatchplot_U.png">
+      </div>
+
+  </div><!-- graph section -->
+</div>
+
+<h3 id="Basechange & quality" style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';"> Basechange & quality<a class="headerlink" name="Overall_Basechange_and_Quality_U1.png" title="Permalink to this headline">&nbsp;</a></h3>
+
+<div class="row">
+<div class="column">
+<div><img width="600" height="600" src="plots/Overall_Basechange_and_Quality_U.png"></div>
+</div>
+<div class="column">
+<div class="row">
+    <img width="300" height="300" src="plots/Read1_fs_Basechange_and_Quality_U.png">
+    <img width="300" height="300" src="plots/Read1_rs_Basechange_and_Quality_U.png">
+</div> 
+
+ <div class="row">
+    <img width="300" height="300" src="plots/Read2_fs_Basechange_and_Quality_U.png">
+    <img width="300" height="300" src="plots/Read2_rs_Basechange_and_Quality_U.png">
+  </div>
+
+</div><!-- graph section -->  
+</div>
+
+
+<h3 id="Per cycle mismatchs & quality status" style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';" > Per cycle mismatchs & quality status<a class="headerlink" name="Overall_Com_plots_U.png" title="Permalink to this headline">&nbsp;</a></h3>
+
+<div class="row">
+<div class="column">
+<div><img width="600" height="550" src="plots/Overall_Com_plots_U.png"></div>
+</div>
+<div class="column">
+<div class="row">
+    <img width="300" height="275" src="plots/Read1_fs_Com_plots_U.png">
+    <img width="300" height="275" src="plots/Read1_rs_Com_plots_U.png">
+</div> 
+
+ <div class="row">
+    <img width="300" height="275" src="plots/Read2_fs_Com_plots_U.png">
+    <img width="300" height="275" src="plots/Read2_rs_Com_plots_U.png">
+  </div>
+
+</div><!-- graph section -->
+</div>
+
+<h3 id="Deletion and Insertion status" style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';" > Deletion and Insertion status<a class="headerlink" name="Overall_Indel_plot_U1.png" title="Permalink to this headline">&nbsp;</a></h3>
+
+<div class="row">
+<div class="column">
+<div><img width="600" height="600" src="plots/Overall_Indel_plot_U.png"></div>
+</div>
+<div class="column">
+<div class="row">
+    <img width="300" height="300" src="plots/Read1_fs_Indel_plot_U.png">
+    <img width="300" height="300" src="plots/Read1_rs_Indel_plot_U.png">
+</div> 
+
+ <div class="row">
+    <img width="300" height="300" src="plots/Read2_fs_Indel_plot_U.png">
+    <img width="300" height="300" src="plots/Read2_rs_Indel_plot_U.png">
+  </div>
+
+</div><!-- graph section -->
+</div>
+
+<h3 id="Read clipping status" style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';" > Read clipping status<a class="headerlink" name="Overall_Clipped_plot_U1.png" title="Permalink to this headline">&nbsp;</a></h3>
+
+<div class="row">
+<div class="column">
+<div><img width="600" height="500" src="plots/Overall_Clipped_plot_U.png"></div>
+</div>
+<div class="column">
+<div class="row">
+    <img width="300" height="250" src="plots/Read1_fs_Clipped_plot_U.png">
+    <img width="300" height="250" src="plots/Read1_rs_Clipped_plot_U.png">
+</div> 
+
+ <div class="row">
+    <img width="300" height="250" src="plots/Read2_fs_Clipped_plot_U.png">
+    <img width="300" height="250" src="plots/Read2_rs_Clipped_plot_U.png">
+  </div>
+
+</div><!-- graph section -->
+</div>
+
+
+    <div class="fixed-footer">
+        <div style="color:white; font-size:100%; float: right; padding-right: 20px; class="container">Created by Mapinsights (version 1.0) </div>
+    </div>
+</body>
+</html>

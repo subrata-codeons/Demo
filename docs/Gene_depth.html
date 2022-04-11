@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Report(genedepth)</title>
+<style>
+    body{        
+        padding-top: 70px;
+        padding-bottom: 40px;
+        padding-left: 20em;
+        
+    }
+    .container{
+        width: 90%;
+        margin: 0 auto; 
+    }
+    .fixed-header{
+        width: 100%;
+        position: fixed;        
+        background: #333;
+        padding: 20px 0;
+        color: #fff;
+        left: 0;
+    }
+    .fixed-footer{
+        width: 100%;
+        position: fixed;        
+        background: #333;
+        padding: 10px 0;
+        color: #fff;
+        left: 0;
+    }
+    .fixed-header{
+        top: 0;
+    }
+    .fixed-footer{
+        bottom: 0;
+    }    
+    /* Some more styles to beautify this example */
+   ul.navbar {
+    position: fixed;
+    top: 4em;
+    left: 1em;
+    width: 19em }
+    
+    .container p{
+        line-height: 200px; /* Create scrollbar to test positioning */
+    }
+</style>
+</head>
+<body>
+    <div class="fixed-header">
+<div class="headertitle">
+<span style="color:#FF5733; font-size:125%; float: left; padding-left: 20px;"><b>Map</b></span>
+<span style="color:#16A085; font-size:125%; float: left;"><b>Insights</b></span>
+<mid style="color:white; font-size:100%; float: right; padding-right: 20px;">Mapinsights genedepth report</mid>
+</div>
+</div>
+
+<ul class="navbar">
+<h2 style="color:#797D7F;">CONTENTS</h2>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Parameters & inputs" style="color:#1C2833;" >Commands and parameters</a></li>
+<li class="toctree-l1" onmouseover="style.fontWeight = 'bold'" onmouseout="style.fontWeight = 'normal'"><a class="reference internal" href="#Summary statistics" style="color:#1C2833;" >Summary statistics</a></li>
+</ul>
+
+        
+    
+  <head>
+<style>
+* {
+  box-sizing: border-box;
+
+}
+
+
+.column {
+ 
+  float: left;
+  width: 50%;
+  padding: 5px;
+  
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+
+<style>
+
+div.mapsummary{
+
+}
+
+table.mapsummary{
+
+	border: 0px;
+  width: 80%;
+  vertical-align: top;
+
+}
+
+div.table-mapsummary{
+	margin-left:auto; 
+  margin-right:auto; 
+	padding-bottom: 20px;
+}
+
+td.column1{
+	width: 50%;
+}
+
+table.infotable {
+
+	font-size:14px;
+	border-color: #AEB6BF;
+	border-width: 1px;
+	border-collapse: collapse;
+}
+table.infotable th {
+	padding: 8px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #AEB6BF;
+	background-color:#FBFCFC;
+}
+table.infotable tr {
+	background-color:#FBFCFC;
+}
+table.infotable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #AEB6BF;
+}
+
+</style>
+
+<h2 id="Parameters & inputs" style="background-color:#E5E7E9;"><u>Parameters & inputs</u></h2>
+
+<div class=mapsummary>
+<h3>Command line</h3>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>mapinsights genedepth -r reference.fa -i input.bam -o Genedepth-output/ -b 1000G_phase3_BRCA1.bed</td>
+</tr>
+</table>
+</div>
+
+<div class=mapsummary>
+<h3>Parameters</h3>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>
+Alignment file </td>
+<td class=column2>input.bam</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Reference file </td>
+<td class=column2>reference.fa</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Bed file </td>
+<td class=column2>1000G_phase3_BRCA1.bed</td>
+</tr>
+
+</table>
+</div>
+<div class=mapsummary>
+<h3>Other information</h3>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Analysis date </td>
+<td class=column2>Fri Apr  8 15:45:59 2022</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>No of contigs in alignment file </td>
+<td class=column2>86</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Reference size (bp) </td>
+<td class=column2>3137454505</td>
+</tr>
+
+</table>
+</div>
+<h2 id="Summary statistics" style="background-color:#E5E7E9;"><u>Summary statistics & plots</u></h2>
+<div class=mapsummary>
+<h3>About bed</h3>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>No of exones</td>
+<td class=column2>21</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Target bed size (bp)</td>
+<td class=column2>6635</td>
+</tr>
+<tr onmouseover="this.style.backgroundColor='#D5F5E3';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage</td>
+<td class=column2>23.69X</td>
+</tr>
+</table>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon1</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon1_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon1</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41201114-41201234</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>44.63</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>27.83X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>28.93</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon2</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon2_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon2</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41203046-41203166</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>55.37</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>18.56X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>95.04</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>51.24</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon3</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon3_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon3</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41209020-41209170</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>151</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>46.36</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>55.42X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon4</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon4_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon4</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41215309-41215429</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>35.54</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>11.98X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>90.08</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>74.38</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon5</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon5_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon5</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41215869-41215989</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>37.19</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>8.92X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>47.11</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon6</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon6_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon6</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41219608-41219728</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>33.06</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>38.79X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>76.03</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon7</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon7_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon7</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41222919-41223279</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>361</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>46.81</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>6.20X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>44.60</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>24.93</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon8</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon8_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon8</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41226322-41226562</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>241</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>43.57</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>32.60X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>96.27</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>87.14</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>67.63</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>59.75</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon9</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon9_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon9</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41228447-41228687</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>241</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>34.85</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>33.42X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>99.59</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>74.27</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>54.77</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon10</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon10_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon10</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41231323-41231443</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>40.50</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>49.07X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon11</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon11_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon11</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41234386-41234626</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>241</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>43.98</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>18.49X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>86.72</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>68.88</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>44.81</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>22.41</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon12</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon12_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon12</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41242944-41243064</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>43.80</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>37.89X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>83.47</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon13</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon13_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon13</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41243424-41246904</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>3481</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>38.93</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>22.86X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>99.91</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>92.27</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>52.80</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>25.54</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon14</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon14_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon14</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41247840-41247960</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>41.32</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>34.52X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>90.08</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>78.51</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon15</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon15_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon15</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41249223-41249343</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>33.88</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>5.33X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>79.34</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon16</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon16_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon16</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41251784-41251904</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>45.45</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>18.85X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>97.52</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>61.16</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon17</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon17_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon17</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41256104-41256328</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>225</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>33.78</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>34.21X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>49.33</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon18</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon18_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon18</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41256868-41256988</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>35.54</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>7.49X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>85.95</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>15.70</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon19</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon19_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon19</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41258451-41258571</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>31.40</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>18.17X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>48.76</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon20</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon20_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon20</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41267709-41267829</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>40.50</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>15.45X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>9.92</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>0.00</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+<h3 style="background-color:#FEF9E7;" onmouseover="this.style.backgroundColor='#F9E79F';" onmouseout="this.style.backgroundColor='#FEF9E7';">Exon21</h3>
+<div class="row">
+<div class="column">
+<div><img width="400" height="400" src="plots_gene-depth/Exon21_depth.png"></div>
+</div>
+<div class="column">
+<div class=mapsummary>
+<table class="mapsummary infotable">
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon no </td>
+<td class=column2>Exon21</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Genomic coordinates </td>
+<td class=column2>chr17:41276013-41276133</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Exon length (bp) </td>
+<td class=column2>121</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>GC% </td>
+<td class=column2>38.02</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>Mean depth of coverage </td>
+<td class=column2>28.62X</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 1X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 5X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 10X depth </td>
+<td class=column2>100.00</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 20X depth </td>
+<td class=column2>86.78</td>
+</tr>
+
+<tr onmouseover="this.style.backgroundColor='#D5F5E3 ';" onmouseout="this.style.backgroundColor='#FBFCFC';">
+<td class=column1>% covered with at least 30X depth </td>
+<td class=column2>52.07</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+
+    <div class="fixed-footer">
+        <div style="color:white; font-size:100%; float: right; padding-right: 20px; class="container">Created by Mapinsights (version 1.0) </div>
+    </div>
+</body>
+</html>
