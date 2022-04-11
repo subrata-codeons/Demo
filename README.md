@@ -1,3 +1,3 @@
-# Test
-
-This repository was created only for testing. 
+# Mapinsights results
+This repo contains the results of bamqc and gegedepth module
+ 
